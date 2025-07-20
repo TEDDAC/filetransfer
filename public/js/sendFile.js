@@ -23,12 +23,12 @@ form.addEventListener("submit", async (e) => {
     onError('File is too large !!! Max 64Mo')
   }
 
-  const response = fetch("upload", {
+  const formData = new FormData()
+  formData.append('file', file)
+
+  const response = fetch("/upload", {
     method: "POST",
-    headers: {
-      "Content-Type": file.type
-    },
-    body: file
+    body: formData
   }).then((res) => {
     console.debug(res)
   }).catch((reason) => {
