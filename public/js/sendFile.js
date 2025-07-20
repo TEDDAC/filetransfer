@@ -33,7 +33,7 @@ form.addEventListener("submit", async (e) => {
   }).then(async (res) => {
     const body = await res.json()
     const id = body.id;
-    const url = `${document.URL}/downloadPage/${id}`
+    const url = `${document.URL}downloadPage/${id}`
     window.location.href = url
   }).catch((reason) => {
     console.error(`Request aborted: ${reason}`)

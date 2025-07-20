@@ -13,14 +13,19 @@ const PORT = 80
 
 const app = express()
 
-app.use(express.static('public'))
 app.use(express.json())
 
 app.post('/upload', upload.single('file'), function (req, res) {
-  //console.log(req.file)
   const body = {id: req.file.filename.split('-')[0]}
-  //console.log(body)
   res.status(200).send(body)
 })
+
+app.get('/downloadPage/:id', (req, res) => {
+  console.log(`Paramètre ${JSON.stringify(req.params)}`)
+  res.status(200).send('Page en cours de maintenance')
+})
+
+
+app.use(express.static('public'))
 
 app.listen(PORT, () => console.log(`Server listening ${PORT}`))
