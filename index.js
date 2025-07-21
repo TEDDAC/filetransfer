@@ -57,7 +57,6 @@ app.set('view engine', 'html');
 app.use(express.json())
 
 app.get('/', (req, res) => {
-  console.log('index.html')
   res.render('index')
 })
 
@@ -87,8 +86,8 @@ app.get('/downloadPage/:id', (req, res) => {
  * Route that deliver the file
  */
 app.get('/downloadFile/:id', (req, res) => {
-  //console.log(`Paramètre ${JSON.stringify(req.params)}`)
-  res.status(204).send('Page en cours de maintenance')
+  const filename = fs.readdirSync('uploads/').find(f => f.startsWith(req.params.id));
+  res.download(`uploads/${filename}`)
 })
 
 app.listen(PORT, () => console.log(`Server listening ${PORT}`))
