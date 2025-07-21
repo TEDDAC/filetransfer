@@ -27,7 +27,7 @@ form.addEventListener("submit", async (e) => {
   const formData = new FormData()
   formData.append('file', file)
 
-  const response = fetch("/upload", {
+  fetch("/upload", {
     method: "POST",
     body: formData
   }).then(async (res) => {

@@ -2,6 +2,8 @@ const express = require('express')
 const multer = require('multer')
 const schedule = require('node-schedule')
 const fs = require('fs')
+const path = require('node:path');
+const HOST = "http://localhost/"
 
 /**
  * Remove every files older than 7 days.
@@ -43,9 +45,23 @@ const PORT = 80
 
 const app = express()
 
+// configure ejs
+app.engine('.html', require('ejs').__express)
+app.set('views', path.join(__dirname, 'views'))
+app.use(express.static(path.join(__dirname, 'public')))
+// Without this you would need to
+// supply the extension to res.render()
+// ex: res.render('users.html').
+app.set('view engine', 'html');
+
 app.use(express.json())
 
-app.post('/upload', upload.single('file'), function (req, res) {
+app.get('/', (req, res) => {
+  console.log('index.html')
+  res.render('index')
+})
+
+app.post('/upload', upload.single('file'), (req, res) => {
   const body = {id: req.file.filename.split('-')[0]}
   res.status(200).send(body)
 })
@@ -55,17 +71,24 @@ app.post('/upload', upload.single('file'), function (req, res) {
  */
 app.get('/downloadPage/:id', (req, res) => {
   //console.log(`Paramètre ${JSON.stringify(req.params)}`)
-  res.status(200).send('Page en cours de maintenance')
+  const files = fs.readdirSync('uploads/');
+  const file = files.find(f => f.startsWith(req.params.id));
+  if(file === undefined){
+    res.status(404).end()
+  }
+  const filename = file.split('-')[1]
+  res.render('downloadPage', {
+    url: `${HOST}downloadFile/${req.params.id}`,
+    name: filename
+  })
 })
 
 /**
  * Route that deliver the file
  */
-app.get('/download/:id', (req, res) => {
+app.get('/downloadFile/:id', (req, res) => {
   //console.log(`Paramètre ${JSON.stringify(req.params)}`)
   res.status(204).send('Page en cours de maintenance')
 })
-
-app.use(express.static('public'))
 
 app.listen(PORT, () => console.log(`Server listening ${PORT}`))
