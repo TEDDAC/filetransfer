@@ -8,4 +8,6 @@ RUN npm install
 
 EXPOSE 80
 
+ENV HOST "http://localhost/"
+
 ENTRYPOINT ["node", "index.js"]

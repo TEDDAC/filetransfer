@@ -3,7 +3,12 @@ const multer = require('multer')
 const schedule = require('node-schedule')
 const fs = require('fs')
 const path = require('node:path');
-const HOST = "http://localhost/"
+
+if(process.env.HOST){
+  const HOST = process.env.HOST
+} else {
+  const HOST = "http://localhost/"
+}
 
 /**
  * Remove every files older than 7 days.
