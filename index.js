@@ -4,10 +4,14 @@ const schedule = require('node-schedule')
 const fs = require('fs')
 const path = require('node:path');
 
+console.log(process.env)
+
+let HOST
+
 if(process.env.HOST){
-  const HOST = process.env.HOST
+  HOST = process.env.HOST
 } else {
-  const HOST = "http://localhost/"
+  HOST = "http://localhost/"
 }
 
 /**
