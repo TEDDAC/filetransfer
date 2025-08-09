@@ -1,8 +1,9 @@
 FROM node:23-alpine
 
-COPY index.js public/ views/ package.json package-lock.json /filetransfer/ 
-
 WORKDIR /filetransfer
+
+COPY index.js package.json package-lock.json public views ./
+
 
 RUN npm install
 
