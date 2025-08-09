@@ -4,11 +4,11 @@ const schedule = require('node-schedule')
 const fs = require('fs')
 const path = require('node:path');
 
-console.log(process.env)
+console.log(process.env.HOST)
 
 let HOST
 
-if(process.env.HOST){
+if(process.env.HOST !== undefined){
   HOST = process.env.HOST
 } else {
   HOST = "http://localhost/"
@@ -85,6 +85,7 @@ app.get('/downloadPage/:id', (req, res) => {
     res.status(404).end()
   }
   const filename = file.split('-')[1]
+  console.log(`${HOST}downloadFile/${req.params.id}`)
   res.render('downloadPage', {
     url: `${HOST}downloadFile/${req.params.id}`,
     name: filename
