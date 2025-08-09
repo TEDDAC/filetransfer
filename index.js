@@ -82,10 +82,9 @@ app.get('/downloadPage/:id', (req, res) => {
   const files = fs.readdirSync('uploads/');
   const file = files.find(f => f.startsWith(req.params.id));
   if(file === undefined){
-    res.status(404).end()
+    res.status(404).render('fileNotFound');
   }
   const filename = file.split('-')[1]
-  console.log(`${HOST}downloadFile/${req.params.id}`)
   res.render('downloadPage', {
     url: `${HOST}downloadFile/${req.params.id}`,
     name: filename
