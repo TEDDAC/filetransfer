@@ -17,6 +17,7 @@ fileField.addEventListener("change", (e) => {
 form.addEventListener("submit", async (e) => {
   e.preventDefault()
   errorMessage.innerHTML = ""
+  document.querySelector("#fileSendingLoader").style.display = "block";
 
   const file = fileField.files[0]
 
@@ -43,4 +44,5 @@ form.addEventListener("submit", async (e) => {
 function onError(message){
   console.error(message)
   errorMessage.innerHTML = message
+  document.querySelector("#fileSendingLoader").style.display = "none";
 }

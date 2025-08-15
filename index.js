@@ -4,9 +4,8 @@ const schedule = require('node-schedule')
 const fs = require('fs')
 const path = require('node:path');
 
-console.log(process.env.HOST)
-
 let HOST
+const PORT = 80
 
 if(process.env.HOST !== undefined){
   HOST = process.env.HOST
@@ -50,7 +49,6 @@ const storage = multer.diskStorage({
   }
 })
 const upload = multer({storage: storage})
-const PORT = 80
 
 const app = express()
 
