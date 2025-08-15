@@ -85,6 +85,7 @@ app.get('/downloadPage/:id', (req, res) => {
   const filename = file.split('-')[1]
   res.render('downloadPage', {
     url: `${HOST}downloadFile/${req.params.id}`,
+    hostUrl: HOST,
     name: filename
   })
 })
