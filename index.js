@@ -18,7 +18,7 @@ if(process.env.HOST !== undefined){
  * Run each hour
  */
 const job = schedule.scheduleJob('0 * * * *', () => {
-  console.log('Cleaning uploads...')
+  //console.log('Cleaning uploads...')
 
   fs.readdir('uploads/', (err, files) => {
     if (err) return console.error('Error reading uploads directory:', err);
