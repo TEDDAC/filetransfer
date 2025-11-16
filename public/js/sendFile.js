@@ -6,11 +6,14 @@ const MAX_SIZE = 2**32 // 4Go
 
 const loading = {
   html: document.querySelector("#fileSendingLoader"),
+  box: document.querySelector("#errorBox"),
   show(){
     this.html.style.display = "block";
+    this.box.style.display = "block";
   },
   hide(){
     this.html.style.display = "none";
+    this.box.style.display = "none";
   }
 }
 

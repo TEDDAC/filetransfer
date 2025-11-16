@@ -7,9 +7,75 @@
   background: 
     radial-gradient(farthest-side,#167bff 94%,#0000) top/8px 8px no-repeat,
     conic-gradient(#0000 30%,#167bff);
-  -webkit-mask: radial-gradient(farthest-side,#0000 calc(100% - 8px),#000 0);
   animation: l13 1s infinite linear;
 }
 @keyframes l13{ 
   100%{transform: rotate(1turn)}
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Fragment+Mono:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Azeret+Mono:ital,wght@0,100..900;1,100..900&family=Fragment+Mono:ital@0;1&display=swap');
+
+body {
+  background: #2d2d2d;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  font-family: "Fragment Mono", monospace;
+  /* align-items: center; */
+}
+
+header {
+  background-color: #515050;
+  margin: 0px;
+  padding: 0px 20px 10px 20px;
+  font-size: 2.8em;
+  font-weight: bold;
+  font-family: "Azeret Mono", monospace;
+  box-shadow: #202020 5px 0px 10px;
+}
+
+h1 {
+  margin: 0;
+}
+
+#content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: auto;
+  padding: 50px 0px;
+  align-content: center;
+  text-align: center;
+}
+
+.bordered {
+  border: solid 10px #515050;
+}
+
+a {
+  color: white;
+}
+
+#errorBox {
+  display: none;
+}
+
+#submitButton{
+  margin: 20px 0px;
+  font-family: "Fragment Mono", monospace;
+  font-size: 1.8em;
+  padding: 10px 20px;
+  background-color: #515050;
+  color: white;
+  border-width: 0px;
+  border-radius: 10px;
+  box-shadow: #202020 5px 5px 0px;
+}
+
+#submitButton:hover {
+  box-shadow: #202020 2px 2px 0px;
 }

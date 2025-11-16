@@ -2,11 +2,11 @@
   <form id="fileSenderForm">
     <label for="file">File to share</label>
     <input type="file" name="file" id="fileField" accept="image/png, image/jpeg, video/mp4, audio/mp3, .ogg, audio/vorbis, application/pdf, application/zip"/><br>
-    <input type="submit" value="Share !">
+    <input type="submit" value="Share !" id="submitButton">
   </form>
-  <p id="responseLink"></p>
+  <!-- <p id="responseLink"></p> -->
   <div class="loader" id="fileSendingLoader"></div>
-  <p><strong id="errorMessage"></strong></p>
+  <p id="errorBox"><strong id="errorMessage"></strong></p>
 
   <script src="js/sendFile.js"></script>
 <%- include('footer.html'); -%>
